@@ -77,6 +77,166 @@
 3. 小明因为太晚才到课室，发现靠前的座位已经被占满了，他只能坐在后排，当拿出手机准备拍照记录PPT笔记的时候发现因为距离的原因导致图片有点模糊，当他直接扫描文字时发现有部分文字缺少，然后他选择了图像清晰的按钮，使图片变得清晰，缺失的文字也出现了。
 
 
+## 原型
+
+超链接（原型文档下载区）
+原型文档交互展示
+
+
+### 产品架构图
+
+
+### 产品流程图
+
+### AXURE原型文档展示
+
+
+
+## API 产品使用关键AI或机器学习之API的输出入展示
+
+### API1.使用水平
+
+### 1. 微软Azure API中的提取文本API
+
+##### 使用的先决条件：
+1.如果想在本地运行此示例，必须安装 Python。
+2.必须具有计算机视觉的订阅密钥。 可以从试用认知服务获取免费试用密钥。 或者，按照创建认知服务帐户中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串创建环境变量，分别名为 COMPUTER_VISION_SUBSCRIPTION_KEY 和 COMPUTER_VISION_ENDPOINT。
+
+ - 输入：
+
+ ```
+       import requests
+import time
+# If you are using a Jupyter notebook, uncomment the following line.
+# %matplotlib inline
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+from PIL import Image
+from io import BytesIO
+
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'key' in os.environ:
+    subscription_key = os.environ['key']
+else:
+    print("\nSet the key environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
+
+if 'endpoint' in os.environ:
+    endpoint = os.environ['endpoint']
+
+text_recognition_url = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze"
+
+# Set image_url to the URL of an image that you want to analyze.
+image_url = "https://c-ssl.duitang.com/uploads/item/201804/26/20180426203556_xdfjn.jpeg"
+
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+data = {'url': image_url}
+response = requests.post(
+    text_recognition_url, headers=headers, json=data)
+response.raise_for_status()
+
+# Extracting text requires two API calls: One call to submit the
+# image for processing, the other to retrieve the text found in the image.
+
+# Holds the URI used to retrieve the recognized text.
+operation_url = response.headers["Operation-Location"]
+
+# The recognized text isn't immediately available, so poll to wait for completion.
+analysis = {}
+poll = True
+while (poll):
+    response_final = requests.get(
+        response.headers["Operation-Location"], headers=headers)
+    analysis = response_final.json()
+    print(analysis)
+    time.sleep(1)
+    if ("recognitionResults" in analysis):
+        poll = False
+    if ("status" in analysis and analysis['status'] == 'Failed'):
+        poll = False
+
+polygons = []
+if ("recognitionResults" in analysis):
+    # Extract the recognized text, with bounding boxes.
+    polygons = [(line["boundingBox"], line["text"])
+                for line in analysis["recognitionResults"][0]["lines"]]
+
+# Display the image and overlay it with the extracted text.
+plt.figure(figsize=(15, 15))
+image = Image.open(BytesIO(requests.get(image_url).content))
+ax = plt.imshow(image)
+for polygon in polygons:
+    vertices = [(polygon[0][i], polygon[0][i+1])
+                for i in range(0, len(polygon[0]), 2)]
+    text = polygon[1]
+    patch = Polygon(vertices, closed=True, fill=False, linewidth=2, color='y')
+    ax.axes.add_patch(patch)
+    plt.text(vertices[0][0], vertices[0][1], text, fontsize=20, va="top")
+       
+  ```
+
+ - 输出:
+ 
+ ```
+ {'status': 'Running'}
+{'status': 'Succeeded', 'recognitionResults': [{'page': 1, 'clockwiseOrientation': 232.16, 'width': 1215, 'height': 1216, 'unit': 'pixel', 'lines': [{'boundingBox': [312, 929, 650, 764, 663, 791, 325, 956], 'text': 'NOTHING GOLD CAN STAY', 'words': [{'boundingBox': [314, 929, 437, 870, 449, 895, 327, 955], 'text': 'NOTHING'}, {'boundingBox': [445, 866, 516, 831, 529, 857, 458, 891], 'text': 'GOLD'}, {'boundingBox': [525, 827, 576, 802, 589, 828, 537, 853], 'text': 'CAN'}, {'boundingBox': [585, 797, 650, 765, 663, 792, 597, 823], 'text': 'STAY'}]}, {'boundingBox': [310, 584, 403, 543, 411, 562, 319, 603], 'text': 'Ron Rash', 'words': [{'boundingBox': [316, 583, 355, 565, 363, 584, 325, 601], 'text': 'Ron'}, {'boundingBox': [358, 564, 402, 544, 411, 563, 367, 582], 'text': 'Rash'}]}, {'boundingBox': [394, 337, 336, 256, 352, 244, 411, 325], 'text': 'TION OF YOUR', 'words': [{'boundingBox': [393, 333, 374, 309, 391, 298, 409, 322], 'text': 'TION'}, {'boundingBox': [372, 306, 361, 291, 378, 280, 388, 295], 'text': 'OF'}, {'boundingBox': [359, 288, 337, 256, 353, 246, 375, 277], 'text': 'YOUR'}]}, {'boundingBox': [436, 318, 392, 262, 405, 252, 448, 308], 'text': 'S BEFORE', 'words': [{'boundingBox': [434, 314, 428, 306, 440, 297, 446, 304], 'text': 'S', 'confidence': 'Low'}, {'boundingBox': [426, 304, 393, 262, 406, 253, 439, 295], 'text': 'BEFORE'}]}, {'boundingBox': [461, 307, 418, 254, 439, 240, 481, 292], 'text': 'TKT', 'words': [{'boundingBox': [456, 301, 421, 258, 441, 243, 475, 285], 'text': 'TKT'}]}]}]}
+        
+  ```
+
+
+
+2. 百度API手写文字识别API
+- 接口描述:对手写中文汉字、数字进行识别
+- 请求方法：POST
+- 接口地址： https://aip.baidubce.com/rest/2.0/ocr/v1/handwriting
+
+ ```
+ import requests
+import json
+import base64
+
+
+def get_file_content(filePath):
+	""" 读取图片base64 """
+	with open(filePath, 'rb') as fp:
+		return base64.b64encode(fp.read())
+
+
+def get_access_token():
+	# API_Key,Secret_Key 需要在 https://console.bce.baidu.com/ai/?fromai=1#/ai/ocr/app/list 创建应用才能获得
+	API_Key = '你的API_Key'
+	Secret_Key = '你的Secret_Key'
+	r = requests.post('https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id='+API_Key+'&client_secret='+Secret_Key)
+	print(r.text)
+	j = json.loads(r.text)
+	access_token = j.get('access_token')
+	print(access_token )
+	return access_token 
+
+
+def recognise_handwriting_pic(access_token,image_path):
+	image = get_file_content(image_path)
+	r = requests.post(
+		url = 'https://aip.baidubce.com/rest/2.0/ocr/v1/handwriting?access_token='+access_token,
+		headers={"Content-Type":"application/x-www-form-urlencoded"},
+		data = {'image':image})
+	#print(r.text)
+	j = json.loads(r.text)
+	words_result = j.get('words_result')
+	for i in words_result:
+		print(i.get('words'))
+
+access_token = get_access_token()  # 获取一次保存下来就够了，一般1个月有效期
+
+# 上传本地图片，逐页识别
+for p in range(1,25):
+	print('\n\n%s\n\n第%d页'%(' *'*20,p))
+	recognise_handwriting_pic(access_token,image_path='C:/Users/kindle/Desktop/wzsb/'+str(p)+'.jpg')
+     
+    ```
+
+
+
 
 我主要设计的一款是通过拍摄/导入图片，来识别手写文字，电子书文字，其中文字内容包括中英文。
 
