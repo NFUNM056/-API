@@ -96,6 +96,11 @@
 
 ### API1.使用水平
 
+
+
+
+### API4.加分项
+
 ### 1. 微软Azure API中的提取文本API
 
 ##### 使用的先决条件：
@@ -189,9 +194,10 @@ for polygon in polygons:
 - 接口描述:对手写中文汉字、数字进行识别
 - 请求方法：POST
 - 接口地址： https://aip.baidubce.com/rest/2.0/ocr/v1/handwriting
+- 将代码进行修改，可进行多张图片上传进行手写文字识别，逐页识别
 
  ```
- import requests
+import requests
 import json
 import base64
 
@@ -204,8 +210,8 @@ def get_file_content(filePath):
 
 def get_access_token():
 	# API_Key,Secret_Key 需要在 https://console.bce.baidu.com/ai/?fromai=1#/ai/ocr/app/list 创建应用才能获得
-	API_Key = '你的API_Key'
-	Secret_Key = '你的Secret_Key'
+	API_Key = 'Your API_key'
+	Secret_Key = 'Your Secret_Key'
 	r = requests.post('https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id='+API_Key+'&client_secret='+Secret_Key)
 	print(r.text)
 	j = json.loads(r.text)
@@ -229,11 +235,29 @@ def recognise_handwriting_pic(access_token,image_path):
 access_token = get_access_token()  # 获取一次保存下来就够了，一般1个月有效期
 
 # 上传本地图片，逐页识别
-for p in range(1,25):
+for p in range(1,2):
 	print('\n\n%s\n\n第%d页'%(' *'*20,p))
-	recognise_handwriting_pic(access_token,image_path='C:/Users/kindle/Desktop/wzsb/'+str(p)+'.jpg')
-     
-    ```
+	recognise_handwriting_pic(access_token,image_path='C:/Users/Lenovo/Desktop/timg (2).jpg')
+   ```
+
+
+- 输出
+
+ ```
+{"refresh_token":"25.7c41d3c00e4fbd19894906a0a4150925.315360000.1891957464.282335-18049732","expires_in":2592000,"session_key":"9mzdCPA10uBmafzKCSh2AK\/YKTRt6yfKx\/tPzB2ZHsxHNvwNFg+bhdgfG6gL52lngVas+CEmZsa75LSRbl8D4Luabio2Qw==","access_token":"24.34f9810b39c507bfcff6af2b4139097d.2592000.1579189464.282335-18049732","scope":"public vis-ocr_ocr brain_ocr_scope brain_ocr_general brain_ocr_general_basic vis-ocr_business_license brain_ocr_webimage brain_all_scope brain_ocr_idcard brain_ocr_driving_license brain_ocr_vehicle_license vis-ocr_plate_number brain_solution brain_ocr_plate_number brain_ocr_accurate brain_ocr_accurate_basic brain_ocr_receipt brain_ocr_business_license brain_solution_iocr brain_qrcode brain_ocr_handwriting brain_ocr_passport brain_ocr_vat_invoice brain_numbers brain_ocr_business_card brain_ocr_train_ticket brain_ocr_taxi_receipt vis-ocr_household_register vis-ocr_vis-classify_birth_certificate vis-ocr_\u53f0\u6e7e\u901a\u884c\u8bc1 vis-ocr_\u6e2f\u6fb3\u901a\u884c\u8bc1 vis-ocr_\u673a\u52a8\u8f66\u68c0\u9a8c\u5408\u683c\u8bc1\u8bc6\u522b vis-ocr_\u8f66\u8f86vin\u7801\u8bc6\u522b vis-ocr_\u5b9a\u989d\u53d1\u7968\u8bc6\u522b vis-ocr_\u4fdd\u5355\u8bc6\u522b brain_ocr_vin brain_ocr_quota_invoice brain_ocr_birth_certificate brain_ocr_household_register brain_ocr_HK_Macau_pass brain_ocr_taiwan_pass brain_ocr_vehicle_certificate brain_ocr_insurance_doc wise_adapt lebo_resource_base lightservice_public hetu_basic lightcms_map_poi kaidian_kaidian ApsMisTest_Test\u6743\u9650 vis-classify_flower lpq_\u5f00\u653e cop_helloScope ApsMis_fangdi_permission smartapp_snsapi_base iop_autocar oauth_tp_app smartapp_smart_game_openapi oauth_sessionkey smartapp_swanid_verify smartapp_opensource_openapi smartapp_opensource_recapi fake_face_detect_\u5f00\u653eScope vis-ocr_\u865a\u62df\u4eba\u7269\u52a9\u7406 idl-video_\u865a\u62df\u4eba\u7269\u52a9\u7406","session_secret":"4f954a8cbf512607ac7b2ff0772e8cd9"}
+
+24.34f9810b39c507bfcff6af2b4139097d.2592000.1579189464.282335-18049732
+
+
+ * * * * * * * * * * * * * * * * * * * *
+
+第1页
+既然目标是地平线
+留给世界的只能是背影
+—《热爱生命》汪国真
+
+ ```
+ 
 
 
 
