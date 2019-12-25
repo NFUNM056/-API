@@ -119,6 +119,9 @@
 ![write.png](https://github.com/NFUNM056/-API/blob/master/write.png "write")
 
 ### 具体的文字图像识别框架请查看以下原型
+- [相机模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_1相机模式 )
+- [相册模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_2相册模式 )
+
 
 - 语音识别API页面
 
