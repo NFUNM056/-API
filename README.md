@@ -91,8 +91,8 @@
 
 ## 原型
 
-超链接（原型文档下载区）
-原型文档交互展示
+- ### [原型文档下载区](https://gitee.com/NFUNM056/api_product_prototype )
+- ### [原型文档交互展示](http://nfunm056.gitee.io/api_product_prototype )
 
 
 ### 产品架构图
