@@ -97,14 +97,43 @@
 
 ### 产品架构图
 
+![frame.png](https://github.com/NFUNM056/-API/blob/master/frame.png "frame")
 
 ### 产品流程图
 
+![flow.png](https://github.com/NFUNM056/-API/blob/master/flow.png "flow")
 
 ### AXURE原型文档展示
 
+- 登录页面
+
+![login.png](https://github.com/NFUNM056/-API/blob/master/login.png "login")
 
 
+- 首页
+
+![head.png](https://github.com/NFUNM056/-API/blob/master/head.png "head")
+
+- 图像识别API页面
+
+![write.png](https://github.com/NFUNM056/-API/blob/master/write.png "write")
+
+### 具体的文字图像识别框架请查看以下原型
+
+- 语音识别API页面
+
+![speak.png](https://github.com/NFUNM056/-API/blob/master/speak.png "speak")
+
+- 图像清晰度增强API页面
+
+![new.png](https://github.com/NFUNM056/-API/blob/master/new.png "new")
+
+- 文档中心页面
+![store.png](https://github.com/NFUNM056/-API/blob/master/store.png "store")
+
+- 个人中心页面
+
+![my.png](https://github.com/NFUNM056/-API/blob/master/my.png "my")
 
 
 ## API 产品使用关键AI或机器学习之API的输出入展示
