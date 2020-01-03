@@ -93,7 +93,7 @@
 
 - ### [原型文档下载区](https://gitee.com/NFUNM056/api_product_prototype )
 - ### [原型文档交互展示](http://nfunm056.gitee.io/api_product_prototype )
-
+- 如果以下图片因网络问题无法查看请点击以下超链接查看[原型文档交互展示](http://nfunm056.gitee.io/api_product_prototype )
 
 ### 产品架构图
 
@@ -118,20 +118,32 @@
 
 ![write.png](https://github.com/NFUNM056/-API/blob/master/write.png "write")
 
-### 具体的文字图像识别框架请查看以下原型
-- [相机模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_1相机模式 )
-- [相册模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_2相册模式 )
+- 相机模式文字识别
+
+![相机模式文字识别.png](https://github.com/NFUNM056/-API/blob/master/camera.png "camera")
+
+
+- 相册模式文字识别
+
+![相册模式文字识别.png](https://github.com/NFUNM056/-API/blob/master/album.png "album")
+
+
+### 具体的文字图像识别流程请查看以下原型
+
+ [相机模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_1相机模式 )
+ [相册模式](http://nfunm056.gitee.io/api_product_prototype/#g=1&p=1_3_2相册模式 )
 
 
 - 语音识别API页面
 
-![speak.png](https://github.com/NFUNM056/-API/blob/master/speak.png "speak")
+![语音识别.png](https://github.com/NFUNM056/-API/blob/master/speaking.png "speaking")
 
 - 图像清晰度增强API页面
 
-![new.png](https://github.com/NFUNM056/-API/blob/master/new.png "new")
+![图像清晰度增强.png](https://github.com/NFUNM056/-API/blob/master/definition.png "definition")
 
 - 文档中心页面
+
 ![store.png](https://github.com/NFUNM056/-API/blob/master/store.png "store")
 
 - 个人中心页面
