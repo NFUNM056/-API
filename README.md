@@ -91,9 +91,9 @@
 
 ## 原型
 
-- ### [原型文档下载区](https://gitee.com/NFUNM056/api_product_prototype )
-- ### [原型文档交互展示](http://nfunm056.gitee.io/api_product_prototype )
-- 如果以下图片因网络问题无法查看请点击以下超链接查看[原型文档交互展示](http://nfunm056.gitee.io/api_product_prototype )
+- ### [原型文档下载区](https://gitee.com/NFUNM056/final_project )
+- ### [原型文档交互展示](http://nfunm056.gitee.io/final_project )
+- 如果以下图片因网络问题无法查看请点击以下超链接查看[原型文档交互展示](http://nfunm056.gitee.io/final_project )
 
 ### 产品架构图
 
@@ -249,7 +249,9 @@ for polygon in polygons:
 
 
 
-2. 百度API手写文字识别API
+### 2. 百度API手写文字识别API
+
+##### 使用说明
 - 接口描述:对手写中文汉字、数字进行识别
 - 请求方法：POST
 - 接口地址： https://aip.baidubce.com/rest/2.0/ocr/v1/handwriting
