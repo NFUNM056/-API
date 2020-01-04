@@ -247,9 +247,38 @@ for polygon in polygons:
         
   ```
 
+### 2. 百度API语音识别API
 
 
-### 2. 百度API手写文字识别API
+ ```
+from aip import AipSpeech
+
+""" 你的 APPID AK SK """
+#宏定义
+APP_ID = '18175774'
+API_KEY = 'GQaQMLaIRjffPgeNNPWb****'
+SECRET_KEY = '80gadDMUTsdFR4BRVvs0HvGvXEFo****' #由于隐私问题，我这个是随便填的一个数
+                                              #你们要用自己的数据
+
+client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
+
+# 读取语音文件函数
+def get_file_content(filePath):
+    with open(filePath, 'rb') as fp:
+        return fp.read()
+
+
+# 识别本地文件  主函数
+print(client.asr(get_file_content('C:\Users\Lenovo\Desktop\speaking.wav'), 'wav', 16000, {'dev_pid': 1536,}))
+
+ ```
+ 
+以下为语言的选择：
+
+![language.png](https://github.com/NFUNM056/-API/blob/master/language.png "language")
+
+
+### 3. 百度API手写文字识别API
 
 ##### 使用说明
 - 接口描述:对手写中文汉字、数字进行识别
@@ -319,10 +348,6 @@ for p in range(1,2):
 
  ```
  
-
-
-
-
 
 
 
