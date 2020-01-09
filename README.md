@@ -344,6 +344,7 @@ for polygon in polygons:
 
 ### 2. 百度API语音识别API
 
+- 输入
 
  ```
 from aip import AipSpeech
@@ -353,7 +354,7 @@ from aip import AipSpeech
 APP_ID = '18175774'
 API_KEY = 'GQaQMLaIRjffPgeNNPWb****'
 SECRET_KEY = '80gadDMUTsdFR4BRVvs0HvGvXEFo****' #由于隐私问题，我这个是随便填的一个数
-                                              #你们要用自己的数据
+                                               #你们要用自己的数据
 
 client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 
@@ -367,6 +368,23 @@ def get_file_content(filePath):
 print(client.asr(get_file_content('C:\Users\Lenovo\Desktop\speaking.wav'), 'wav', 16000, {'dev_pid': 1536,}))
 
  ```
+ 
+ - 输出
+ 
+  ```
+  
+ {
+    "err_no": 0,
+    "err_msg": "success.",
+    "corpus_no": "15984125203285357600",
+    "sn": "235C524F-23TR-562F-73DR-9157WOMG3C8H",
+    "result": ["网络与新媒体"]
+}
+ 
+ 
+ ```
+ 
+ 
  
 以下为语言的选择：
 
