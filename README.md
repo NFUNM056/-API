@@ -1,4 +1,7 @@
-# 期末项目
+# 记录小助手APP
+
+[记录小助手Powerpoint](https://github.com/NFUNM056/-API/blob/master/记录小助手.pptx )
+
 
 产品需求文档
 
